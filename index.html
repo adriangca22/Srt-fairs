@@ -40,19 +40,6 @@ body {
 
 p { font-weight: 450; }
 
-/* ══ SCROLL PROGRESS BAR ══ */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--green), var(--green-light));
-  z-index: 1000;
-  transition: width 0.1s ease-out;
-  box-shadow: 0 0 10px rgba(31, 173, 110, 0.5);
-}
-
 /* ══ NOISE TEXTURE OVERLAY ═ */
 body::before {
   content: '';
@@ -110,7 +97,7 @@ body:hover .cursor-outline { opacity: 1; }
   background: rgba(31,173,110,0.1);
   border-color: transparent;
 }
-
+.back-top { display: none !important; }
 /* ── NAV (SIEMPRE BLANCO) ── */
 nav {
   position: fixed; 
@@ -118,7 +105,7 @@ nav {
   left: 0; 
   right: 0; 
   z-index: 100;
-  padding: 20px 60px;
+  padding: 12px 30px;
   display: flex; 
   align-items: center; 
   justify-content: space-between;
@@ -198,9 +185,12 @@ nav {
   transition: 0.3s; 
 }
 
-/* ══ MOBILE MENU ══ */
+/* ══ MOBILE MENU (CSS-only, via checkbox hack) ══ */
+.menu-toggle {
+  display: none;
+}
 .mobile-menu {
-  display: none; 
+  display: flex; 
   position: fixed; 
   top: 0; 
   left: 0; 
@@ -213,11 +203,12 @@ nav {
   justify-content: center; 
   gap: 32px;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.4s;
 }
-.mobile-menu.open { 
-  display: flex; 
+.menu-toggle:checked ~ .mobile-menu { 
   opacity: 1; 
+  pointer-events: auto;
 }
 .mobile-menu a {
   font-family: 'Fraunces', serif; 
@@ -226,17 +217,7 @@ nav {
   color: var(--white); 
   text-decoration: none; 
   transition: all 0.3s;
-  transform: translateY(20px);
-  opacity: 0;
 }
-.mobile-menu.open a { 
-  transform: translateY(0); 
-  opacity: 1; 
-}
-.mobile-menu a:nth-child(2) { transition-delay: 0.1s; }
-.mobile-menu a:nth-child(3) { transition-delay: 0.15s; }
-.mobile-menu a:nth-child(4) { transition-delay: 0.2s; }
-.mobile-menu a:nth-child(5) { transition-delay: 0.25s; }
 .mobile-menu a:hover { 
   color: var(--green); 
   transform: translateX(8px); 
@@ -328,29 +309,33 @@ nav {
 }
 
 .hero-text-group {
-  max-width: 620px;
+  max-width: 630px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 10 px;
 }
 
 .hero-eyebrow {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 500;
   color: rgba(255,255,255,0.95);
-  margin-bottom: 6px;
+  
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  white-space: nowrap; /* ◄--- Evita que el texto salte de línea */
+   margin-bottom: 30px;
 }
-
 .hero-title {
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 900;
+  font-weight: 600;
+    white-space: nowrap; /* ◄--- Evita que el texto salte de línea */
   color: var(--white);
   line-height: 1.15;
   margin-bottom: 0;
+  
+  /* ◄--- Añade esto para limitar el espacio horizontal */
+  max-width: 38ch; /* 'ch' mide el ancho basado en caracteres. Ve ajustando este número (18, 19, 20) hasta que rompa exacto */
 }
 
 .hero-location {
@@ -412,6 +397,7 @@ nav {
   transition: all 0.3s var(--transition);
   box-shadow: 0 6px 24px rgba(31,173,110,0.35);
   white-space: nowrap;
+  margin-top: 50px;
 }
 
 .btn-primary:hover { 
@@ -488,7 +474,7 @@ nav {
 section { padding: 100px 60px; width: 100%; }
 .section-tag {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  font-size: 13px; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase;
   color: var(--green); margin-bottom: 16px;
 }
 .section-tag::before { 
@@ -497,34 +483,27 @@ section { padding: 100px 60px; width: 100%; }
 }
 .section-tag:hover::before { width: 40px; }
 .section-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(2.1rem, 3.5vw, 3.2rem);
-  font-weight: 850; line-height: 1.1; letter-spacing: -0.02em; color: var(--navy);
-  font-variation-settings: "SOFT" 50;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  color: var(--navy);
+  margin-bottom: 16px;
 }
-.section-title span { 
-  color: var(--green); 
-  font-style: italic;
-  position: relative;
-  display: inline-block;
+.section-title span {
+  color: var(--navy);
+  font-style: normal;
+  display: inline;
 }
-.section-title span::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--green), transparent);
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.6s var(--transition);
-}
-.section-title:hover span::after { transform: scaleX(1); }
 .section-subtitle {
-  font-size: 1rem; color: var(--gray-text); line-height: 1.7; font-weight: 500;
-  max-width: 540px; margin-top: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  color: var(--gray-text);
+  line-height: 1.6;
+  font-weight: 500;
+  max-width: 640px;
+  margin-top: 12px;
 }
 /* ── EVENT INFO (White Background Version) ── */
 .event-info { 
@@ -685,7 +664,7 @@ section { padding: 100px 60px; width: 100%; }
   align-items: center; 
   justify-content: center;
   color: var(--green); 
-  font-size: 24px;
+  font-size: 34px;
   transition: all 0.3s ease;
 }
 
@@ -696,18 +675,18 @@ section { padding: 100px 60px; width: 100%; }
 }
 
 .event-detail-row h4 { 
-  font-size: 16px; 
-  font-weight: 700; 
+  font-size: 18px; 
+  font-weight: 800; 
   color: var(--navy); 
   margin-bottom: 6px;
   line-height: 1.3;
 }
 
 .event-detail-row p { 
-  font-size: 14px; 
+  font-size: 15.5px; 
   color: var(--gray-text); 
   line-height: 1.6;
-  font-weight: 500;
+  font-weight: 650;
   margin: 0;
 }
 
@@ -788,9 +767,9 @@ section { padding: 100px 60px; width: 100%; }
   padding: 32px 36px;
 }
 .register-card h3 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Montserrat', sans-serif;
   color: var(--green-light);
-  font-size: 1.5rem;
+  font-size: clamp(1.9rem, 2.6vw, 2.3rem);
   font-weight: 800;
   line-height: 1.25;
   margin-bottom: 12px;
@@ -801,7 +780,7 @@ section { padding: 100px 60px; width: 100%; }
 }
 .register-card p { 
   color: rgba(255,255,255,0.9); 
-  font-size: 1rem; 
+  font-size: 1.15rem; 
   line-height: 1.6; 
   font-weight: 500;
 }
@@ -838,14 +817,14 @@ section { padding: 100px 60px; width: 100%; }
 }
 .register-form-header h3 {
   font-family: 'Fraunces', serif; 
-  font-size: 1.4rem; 
+  font-size: 1.6rem; 
   font-weight: 800; 
   color: var(--navy);
   line-height: 1.3; 
   margin-bottom: 12px;
 }
 .register-form-header p { 
-  font-size: 13px; 
+  font-size: 14.5px; 
   color: var(--gray-text); 
   line-height: 1.65; 
   font-weight: 500;
@@ -855,7 +834,7 @@ section { padding: 100px 60px; width: 100%; }
 }
 .form-row label { 
   display: block; 
-  font-size: 12px; 
+  font-size: 13px; 
   font-weight: 600; 
   color: var(--navy); 
   margin-bottom: 6px; 
@@ -867,7 +846,7 @@ section { padding: 100px 60px; width: 100%; }
   border-radius: var(--radius-sm);
   border: 1px solid var(--gray-light); 
   font-family: 'Inter', sans-serif; 
-  font-size: 14px;
+  font-size: 15px;
   color: var(--navy); 
   background: var(--off-white); 
   transition: all 0.25s var(--transition);
@@ -891,7 +870,7 @@ section { padding: 100px 60px; width: 100%; }
   flex-shrink: 0; 
 }
 .form-check span { 
-  font-size: 11.5px; 
+  font-size: 12.5px; 
   color: var(--gray-text); 
   line-height: 1.6; 
   font-weight: 500;
@@ -963,12 +942,6 @@ section { padding: 100px 60px; width: 100%; }
   border-radius: var(--radius);
   border: 1px solid var(--gray-light);
   transition: all 0.35s var(--transition);
-  opacity: 0; 
-  transform: translateY(20px);
-}
-.area-card.visible { 
-  opacity: 1; 
-  transform: translateY(0); 
 }
 .area-card:hover { 
   border-color: transparent; 
@@ -976,8 +949,8 @@ section { padding: 100px 60px; width: 100%; }
   transform: translateY(-4px) !important; 
 }
 .area-icon {
-  width: 52px; 
-  height: 52px; 
+  width: 60px; 
+  height: 60px; 
   margin: 0 auto 16px; 
   border-radius: 12px;
   background: rgba(31,173,110,0.08); 
@@ -985,7 +958,7 @@ section { padding: 100px 60px; width: 100%; }
   align-items: center; 
   justify-content: center;
   color: var(--green); 
-  font-size: 20px; 
+  font-size: 24px; 
   transition: all 0.3s var(--transition);
 }
 .area-card:hover .area-icon { 
@@ -994,8 +967,8 @@ section { padding: 100px 60px; width: 100%; }
   transform: scale(1.08) rotate(-4deg); 
 }
 .area-card h4 { 
-  font-size: 13px; 
-  font-weight: 650; 
+  font-size: 16px; 
+  font-weight: 700; 
   color: var(--navy); 
   line-height: 1.4; 
 }
@@ -1019,13 +992,13 @@ section { padding: 100px 60px; width: 100%; }
   margin-bottom: 28px; 
 }
 .process-note h4 { 
-  font-size: 15px; 
+  font-size: 17px; 
   font-weight: 700; 
   color: var(--navy); 
   margin-bottom: 6px; 
 }
 .process-note p { 
-  font-size: 13.5px; 
+  font-size: 15.5px; 
   color: var(--gray-text); 
   line-height: 1.7; 
   font-weight: 500;
@@ -1075,7 +1048,7 @@ section { padding: 100px 60px; width: 100%; }
   font-size: 24px;
 }
 .step-card p { 
-  font-size: 13.5px; 
+  font-size: 16px; 
   color: var(--navy); 
   line-height: 1.55; 
   font-weight: 550; 
@@ -1120,14 +1093,8 @@ section { padding: 100px 60px; width: 100%; }
   background: var(--white);
   border: 1px solid var(--gray-light);
   transition: all 0.35s var(--transition);
-  opacity: 0; 
-  transform: translateY(20px);
   display: flex;
   flex-direction: column;
-}
-.experience-card.visible { 
-  opacity: 1; 
-  transform: translateY(0); 
 }
 .experience-card:hover { 
   transform: translateY(-6px) !important; 
@@ -1151,7 +1118,7 @@ section { padding: 100px 60px; width: 100%; }
 }
 .experience-card p { 
   padding: 20px; 
-  font-size: 13.5px; 
+  font-size: 16px; 
   color: var(--navy); 
   line-height: 1.6;
   font-weight: 550;
@@ -1221,13 +1188,13 @@ section { padding: 100px 60px; width: 100%; }
   display: flex; 
   gap: 12px; 
   align-items: center; 
-  font-size: 14.5px; 
+  font-size: 17px; 
   color: var(--navy); 
   font-weight: 550; 
 }
 .faq-check-list li i { 
   color: var(--green); 
-  font-size: 15px; 
+  font-size: 17px; 
   flex-shrink: 0; 
 }
 
@@ -1250,7 +1217,7 @@ section { padding: 100px 60px; width: 100%; }
 .schedule-item {
   background: var(--white); 
   border: 1px solid var(--gray-light); 
-  border-radius: var(--radius-sm);
+  border-radius: 20px;
   padding: 20px 24px; 
   transition: all 0.3s var(--transition);
 }
@@ -1260,20 +1227,20 @@ section { padding: 100px 60px; width: 100%; }
   transform: translateX(6px); 
 }
 .schedule-time { 
-  font-size: 12px; 
+  font-size: 13px; 
   font-weight: 700; 
   color: var(--green); 
   letter-spacing: 0.04em; 
   margin-bottom: 8px; 
 }
 .schedule-item h4 { 
-  font-size: 15px; 
+  font-size: 18px; 
   font-weight: 700; 
   color: var(--navy); 
   margin-bottom: 2px; 
 }
 .schedule-item .role { 
-  font-size: 12.5px; 
+  font-size: 14.5px; 
   color: var(--gray-text); 
   font-style: italic; 
   margin-bottom: 8px; 
@@ -1281,7 +1248,7 @@ section { padding: 100px 60px; width: 100%; }
   font-weight: 500;
 }
 .schedule-item .talk { 
-  font-size: 13.5px; 
+  font-size: 16px; 
   color: var(--navy); 
   font-weight: 650; 
 }
@@ -1290,16 +1257,56 @@ section { padding: 100px 60px; width: 100%; }
   flex-direction: column; 
 }
 .schedule-side > p { 
-  font-size: 13.5px; 
+  font-size: 15.5px; 
   color: var(--gray-text); 
   line-height: 1.7; 
   margin: 16px 0 28px; 
   font-weight: 500;
 }
-.speaker-avatars { 
-  display: flex; 
-  gap: 14px; 
-  flex-wrap: wrap; 
+
+/* ══ TIMELINE DE AGENDA (estilo alineado como la referencia) ══ */
+.schedule-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+}
+.schedule-timeline::before {
+  content: '';
+  position: absolute;
+  left: 34px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: rgba(10, 22, 40, 0.85);
+}
+.timeline-entry {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 68px;
+}
+.timeline-dot {
+  position: relative;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 3px solid var(--off-white);
+  box-shadow: 0 0 0 1.5px var(--green);
+  flex-shrink: 0;
+  margin-left: 29px;
+}
+.timeline-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.timeline-avatars {
+  display: flex;
+  gap: 12px;
 }
 .speaker-avatar { 
   width: 68px; 
@@ -1347,15 +1354,15 @@ section { padding: 100px 60px; width: 100%; }
   z-index: 1; 
 }
 .closing-text h2 { 
-  font-family: 'Fraunces', serif; 
-  font-size: clamp(1.9rem, 3vw, 2.6rem); 
-  font-weight: 800; 
+  font-family: 'Montserrat', sans-serif; 
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem); 
+  font-weight: 700; 
+  line-height: 1.25;
   color: var(--navy); 
   margin-bottom: 24px; 
 }
 .closing-text h2 span { 
-  color: var(--green); 
-  font-style: italic; 
+  color: var(--navy); 
 }
 .closing-text .event-detail-row h4 {
   color: var(--navy) !important;
@@ -1363,7 +1370,7 @@ section { padding: 100px 60px; width: 100%; }
 .closing-map { 
   border-radius: var(--radius); 
   overflow: hidden; 
-  aspect-ratio: 4/3; 
+  aspect-ratio: 16/9; 
   border: 1px solid var(--gray-light); 
   box-shadow: 0 12px 32px rgba(10,22,40,0.08);
 }
@@ -1384,7 +1391,7 @@ section { padding: 100px 60px; width: 100%; }
 .partners-intro { 
   text-align: center; 
   margin-bottom: 60px; 
-  max-width: 720px; 
+  max-width: 780px; 
   margin-left: auto; 
   margin-right: auto; 
 }
@@ -1573,15 +1580,10 @@ footer::after {
   margin: 0;
 }
 
-/* ── REVEAL ── */
+/* ── REVEAL (visible por defecto: sin JS no hay scroll-observer) ── */
 .reveal { 
-  opacity: 0; 
-  transform: translateY(28px); 
-  transition: opacity 0.7s var(--transition), transform 0.7s var(--transition); 
-}
-.reveal.visible { 
   opacity: 1; 
-  transform: translateY(0); 
+  transform: none; 
 }
 
 /* ── BACK TOP ── */
@@ -1705,28 +1707,27 @@ footer::after {
 </style>
 </head>
 <body>
-  <!-- Scroll Progress Bar -->
-<div class="scroll-progress" id="scrollProgress"></div>
+  <!-- Checkbox oculto que controla el menú móvil (sin JS) -->
+  <input type="checkbox" id="menuToggle" class="menu-toggle">
 
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-logo">
-    <img src="LOGO-ORIGINAL.png" alt="SRT CONNECTED" loading="lazy" decoding="async"
-      onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block'">
+    <img src="LOGO-ORIGINAL.png" alt="SRT CONNECTED" loading="lazy" decoding="async">
     <div id="logoFallback" class="nav-logo-fallback">
       <span style="color:#1FAD6E">●</span> SRT<span style="color:#1FAD6E">CONNECTED</span>
       <span class="logo-subtitle">BARCELONA</span>
     </div>
   </div>
   <a href="#registro" class="nav-cta-btn">Get your free access</a>
-  <button class="hamburger" id="hamburgerBtn" aria-label="Menú">
+  <label class="hamburger" for="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
-  </button>
+  </label>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
+  <label class="mobile-close" for="menuToggle"><i class="fa-solid fa-xmark"></i></label>
   <a href="#evento" class="mob-link">El evento</a>
   <a href="#registro" class="mob-link">Regístrate</a>
   <a href="#universidades" class="mob-link">Universidades</a>
@@ -1741,8 +1742,7 @@ footer::after {
          alt="Event background" 
          loading="eager" 
          fetchpriority="high"
-         decoding="async"
-         onerror="this.src='https://images.unsplash.com/photo-1544531585-9847b68c8c86?w=1920&q=80'">
+         decoding="async">
   </div>
   
   <!-- Overlay más suave -->
@@ -1752,7 +1752,8 @@ footer::after {
   <div class="hero-content">
     <div class="hero-text-group">
       <p class="hero-eyebrow">WISH TO KNOW ALL ABOUT DOING A MASTER'S ABROAD?</p>
-      <h1 class="hero-title">Postgraduate International University Fair</h1>
+      <h1 class="hero-title">Postgraduate International </h1>
+       <h1 class="hero-title"> University Fair</h1>
       <h2 class="hero-location">Barcelona, 6 March 2026</h2>
       <ul class="hero-features">
         <li><i class="fa-solid fa-check-circle"></i> One afternoon</li>
@@ -1828,13 +1829,11 @@ footer::after {
       <div class="register-images">
         <div class="register-img-top">
           <img src="IMAGEN-1.png" alt="Estudiantes conversando en la feria" 
-               loading="lazy" decoding="async"
-               onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80'">
+               loading="lazy" decoding="async">
         </div>
         <div class="register-img-bottom">
           <img src="IMAGEN-2 (1).png" alt="Credenciales del evento" 
-               loading="lazy" decoding="async"
-               onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80'">
+               loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1943,8 +1942,8 @@ footer::after {
 
 <!-- ÁREAS ACADÉMICAS -->
 <section class="academic-areas">
-  <div style="text-align:center; max-width:640px; margin:0 auto;" class="reveal">
-    <h2 class="section-title">Y en todas las <span>áreas académicas</span><br>que te puedas imaginar</h2>
+  <div style="text-align:center; max-width:720px; margin:0 auto;" class="reveal">
+    <h2 class="section-title">Y en todas las <span>áreas académicas</span> que te puedas imaginar</h2>
   </div>
   <div class="areas-grid">
     <div class="area-card">
@@ -1990,8 +1989,7 @@ footer::after {
       </div>
       <div class="process-img">
         <img src="IMAGEN-3.png" alt="Estudiantes en el evento" 
-             loading="lazy" decoding="async"
-             onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80'">
+             loading="lazy" decoding="async">
       </div>
     </div>
     <div class="process-steps reveal">
@@ -2049,12 +2047,11 @@ footer::after {
   <div class="faq-check-grid">
     <div class="faq-check-img reveal">
       <img src="IMAGEN-4.png" alt="Estudiantes resolviendo dudas" 
-           loading="lazy" decoding="async"
-           onerror="this.src='https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80'">
+           loading="lazy" decoding="async">
     </div>
     <div class="reveal">
       <div class="section-tag">Asesoría integral</div>
-      <h2 class="section-title">Resuelve todas tus dudas<br>sobre...</h2>
+      <h2 class="section-title">Resuelve todas tus dudas sobre...</h2>
       <ul class="faq-check-list">
         <li><i class="fa-solid fa-circle-check"></i> Programas y opciones de estudio</li>
         <li><i class="fa-solid fa-circle-check"></i> Plazos de postulación</li>
@@ -2101,13 +2098,32 @@ footer::after {
       </div>
     </div>
     <div class="schedule-side reveal">
-      <h3 class="section-title" style="font-size:1.5rem">¿Qué tenemos preparado para el evento?</h3>
+      <h3 class="section-title" style="font-size:1.7rem">¿Qué tenemos preparado para el evento?</h3>
       <p>Charlas, mesas de trabajo y espacios de networking con especialistas invitados de distintas partes del mundo.</p>
-      <div class="speaker-avatars">
-        <div class="speaker-avatar"><img src="https://ui-avatars.com/api/?name=Elif+Karakolcu&background=1FAD6E&color=fff&size=136" alt="Elif Damla Karakolcu" loading="lazy" decoding="async"></div>
-        <div class="speaker-avatar"><img src="https://ui-avatars.com/api/?name=Krasimir+Stoev&background=0F2240&color=fff&size=136" alt="Krasimir Stoev" loading="lazy" decoding="async"></div>
-        <div class="speaker-avatar"><img src="https://ui-avatars.com/api/?name=Yulia+Tiyakova&background=1FAD6E&color=fff&size=136" alt="Yulia Tiyakova" loading="lazy" decoding="async"></div>
-        <div class="speaker-avatar"><img src="https://ui-avatars.com/api/?name=Christian+Nielsen&background=0F2240&color=fff&size=136" alt="Christian Vester Nielsen" loading="lazy" decoding="async"></div>
+      <div class="schedule-timeline">
+        <div class="timeline-entry">
+          <span class="timeline-dot"></span>
+          <span class="timeline-label">Opening Session</span>
+        </div>
+        <div class="timeline-entry">
+          <span class="timeline-dot"></span>
+          <div class="timeline-avatars">
+            <div class="speaker-avatar"><img src="imagems (1).png" alt="Elif Damla Karakolcu" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+        <div class="timeline-entry">
+          <span class="timeline-dot"></span>
+          <div class="timeline-avatars">
+            <div class="speaker-avatar"><img src="imagems (4).png" alt="Krasimir Stoev" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+        <div class="timeline-entry">
+          <span class="timeline-dot"></span>
+          <div class="timeline-avatars">
+            <div class="speaker-avatar"><img src="imagems (3).png" alt="Yulia Tiyakova" loading="lazy" decoding="async"></div>
+            <div class="speaker-avatar"><img src="imagems (2).png" alt="Christian Vester Nielsen" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2117,8 +2133,7 @@ footer::after {
 <section class="closing" id="contact">
   <div class="closing-img reveal">
     <img src="BANNER-2.png" alt="Feria SRT Fairs" 
-         loading="lazy" decoding="async"
-         onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80'">
+         loading="lazy" decoding="async">
   </div>
   <div class="closing-grid">
     <div class="closing-text reveal">
@@ -2149,6 +2164,9 @@ footer::after {
     </div>
   </div>
 </section>
+
+</body>
+</html>
 
 <script>
   // Reveal on scroll
