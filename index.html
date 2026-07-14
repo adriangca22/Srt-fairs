@@ -505,6 +505,8 @@ section { padding: 100px 60px; width: 100%; }
   justify-content: center;
   text-decoration: none;
   transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .video-placeholder:hover {
@@ -590,6 +592,30 @@ section { padding: 100px 60px; width: 100%; }
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Video Player Container (oculto inicialmente) */
+.video-player-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 5;
+}
+
+.video-player-container.active {
+  display: block;
+}
+
+.video-player-container iframe,
+.video-player-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 /* Event Details */
 .event-detail-list { 
   display: flex; 
@@ -1728,26 +1754,50 @@ footer::after {
     </div>
   </div>
 </section>
-
 <!-- EVENT INFO -->
 <section class="event-info" id="evento">
   <div class="event-info-grid">
     <div class="event-video reveal">
       <div class="video-wrapper">
-        <a href="https://www.youtube.com/watch?v=v07kptdZToY" target="_blank" class="video-placeholder">
+        
+        <!-- Placeholder con thumbnail (visible inicialmente) -->
+        <div class="video-placeholder" id="videoPlaceholder">
           <div class="video-thumbnail">
-            <img src="IMAGEN-1.png" alt="Santiago">
+            <!-- Usa una imagen de thumbnail de YouTube o sube la tuya -->
+            <img src="https://img.youtube.com/vi/2Izszg7vWWQ/maxresdefault.jpg" alt="Video del evento">
           </div>
           <div class="video-overlay">
             <i class="fa-brands fa-youtube play-icon"></i>
             <div class="video-content">
               <h3>Ver video del evento</h3>
-              <p>Click para ver en YouTube</p>
+            
             </div>
           </div>
-        </a>
+        </div>
+        
+        <!-- Contenedor del video (se muestra al hacer click) -->
+        <div class="video-player-container" id="videoPlayerContainer">
+          <!-- OPCIÓN 1: Si usas File Garden u otro hosting con iframe -->
+          <iframe 
+            id="videoFrame"
+            src="" 
+            title="Video del evento"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+          
+          <!-- OPCIÓN 2: Si tienes el video directo (mp4) -->
+          <!-- 
+          <video id="videoElement" controls>
+            <source src="URL_DE_TU_VIDEO.mp4" type="video/mp4">
+            Tu navegador no soporta el tag de video.
+          </video>
+          -->
+        </div>
+        
       </div>
     </div>
+    
     <div class="event-detail-list">
       <div class="event-detail-row reveal">
         <div class="event-detail-icon">
@@ -1780,6 +1830,43 @@ footer::after {
   </div>
 </section>
 
+<!-- JavaScript para reproducir el video -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const placeholder = document.getElementById('videoPlaceholder');
+    const playerContainer = document.getElementById('videoPlayerContainer');
+    const videoFrame = document.getElementById('videoFrame');
+    
+    // URL del video - CAMBIA ESTO según donde lo subas
+    // OPCIÓN 1: File Garden (cuando lo subas)
+    // const videoUrl = 'https://file.garden/YOUR_VIDEO_ID/video.mp4';
+    
+    // OPCIÓN 2: YouTube embed (si decides usarlo)
+    const videoUrl = 'https://file.garden/aicj-LWBZTmGA5zi/video_1f7143eaf61d.mp4';
+    
+    // OPCIÓN 3: Video directo MP4
+    // const videoUrl = 'URL_DE_TU_VIDEO.mp4';
+    
+    placeholder.addEventListener('click', function() {
+      // Ocultar placeholder
+      placeholder.style.display = 'none';
+      
+      // Mostrar reproductor
+      playerContainer.classList.add('active');
+      
+      // Cargar y reproducir video
+      if (videoFrame) {
+        videoFrame.src = videoUrl;
+      }
+      
+      // Si usas video tag en lugar de iframe:
+      // const videoElement = document.getElementById('videoElement');
+      // if (videoElement) {
+      //   videoElement.play();
+      // }
+    });
+  });
+</script>
 <!-- REGISTRO -->
 <section class="register" id="registro">
   <div class="register-grid">
