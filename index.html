@@ -224,7 +224,7 @@ body:hover .cursor-outline { opacity: 1; }
     box-shadow: 0 1px 8px rgba(31,173,110,0.15);
   }
 }
-/* ── HERO CON IMAGEN DE FONDO COMPLETA ── */
+/* ─ HERO CON IMAGEN DE FONDO COMPLETA ── */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -250,8 +250,16 @@ body:hover .cursor-outline { opacity: 1; }
   object-position: center;
 }
 
-/* Overlay: más fuerte a la izquierda (donde va el texto), se disuelve hacia la derecha
-   para dejar la foto visible, tal como en la referencia */
+/* ✅ Mostrar desktop, ocultar mobile por defecto */
+.hero-bg-desktop {
+  display: block;
+}
+
+.hero-bg-mobile {
+  display: none;
+}
+
+/* Overlay: más fuerte a la izquierda (donde va el texto), se disuelve hacia la derecha */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -274,7 +282,7 @@ body:hover .cursor-outline { opacity: 1; }
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 120px 60px 80px 100px; /* top right bottom left */
+  padding: 120px 60px 80px 100px;
   text-align: left;
 }
 
@@ -282,7 +290,7 @@ body:hover .cursor-outline { opacity: 1; }
   max-width: 630px;
   display: flex;
   flex-direction: column;
-  gap: 10 px;
+  gap: 10px;
 }
 
 .hero-eyebrow {
@@ -290,22 +298,20 @@ body:hover .cursor-outline { opacity: 1; }
   font-size: 24px;
   font-weight: 500;
   color: rgba(255,255,255,0.95);
-  
   letter-spacing: 0.08em;
-  white-space: nowrap; /* ◄--- Evita que el texto salte de línea */
-   margin-bottom: 30px;
+  white-space: nowrap;
+  margin-bottom: 30px;
 }
+
 .hero-title {
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 600;
-    white-space: nowrap; /* ◄--- Evita que el texto salte de línea */
+  white-space: nowrap;
   color: var(--white);
   line-height: 1.15;
   margin-bottom: 0;
-  
-  /* ◄--- Añade esto para limitar el espacio horizontal */
-  max-width: 38ch; /* 'ch' mide el ancho basado en caracteres. Ve ajustando este número (18, 19, 20) hasta que rompa exacto */
+  max-width: 38ch;
 }
 
 .hero-location {
@@ -337,7 +343,6 @@ body:hover .cursor-outline { opacity: 1; }
   font-weight: 600;
 }
 
-/* CHECKS MÁS GRANDES Y BLANCOS */
 .hero-features li i {
   color: var(--white);
   font-size: 1.4rem;
@@ -350,6 +355,132 @@ body:hover .cursor-outline { opacity: 1; }
   flex-wrap: wrap;
 }
 
+.btn-primary {
+  background: var(--green); 
+  color: var(--white);
+  padding: 18px 36px; 
+  border-radius: 100px; 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700; 
+  text-decoration: none; 
+  border: none; 
+  cursor: pointer;
+  display: inline-flex; 
+  align-items: center; 
+  gap: 10px;
+  transition: all 0.3s var(--transition);
+  box-shadow: 0 6px 24px rgba(31,173,110,0.35);
+  white-space: nowrap;
+  margin-top: 50px;
+}
+
+.btn-primary:hover { 
+  background: var(--green-light); 
+  transform: translateY(-3px); 
+  box-shadow: 0 10px 32px rgba(31,173,110,0.45);
+}
+
+/* ══ RESPONSIVE HERO ══ */
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 100px 40px 60px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ✅ Ocultar desktop, mostrar mobile */
+  .hero-bg-desktop {
+    display: none;
+  }
+  
+  .hero-bg-mobile {
+    display: block;
+  }
+  
+  .hero-content {
+    padding: 120px 30px 50px 30px;
+    text-align: center;
+  }
+
+  .hero-text-group {
+    max-width: 100%;
+    align-items: center;
+  }
+  
+  .hero-eyebrow {
+    font-size: 18px;
+    white-space: normal;
+    margin-bottom: 20px;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    white-space: normal;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .hero-location {
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    text-align: center;
+  }
+  
+  .hero-features {
+    max-width: 500px;
+    margin: 0 auto 32px;
+    text-align: left;
+  }
+  
+  .hero-features li {
+    justify-content: center;
+    font-size: 1rem;
+  }
+  
+  .hero-features li i {
+    font-size: 1.2rem;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .btn-primary {
+    padding: 16px 28px;
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-content {
+    padding: 100px 20px 40px 20px;
+  }
+  
+  .hero-eyebrow {
+    font-size: 16px;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-location {
+    font-size: 1.1rem;
+  }
+  
+  .hero-features li {
+    font-size: 0.95rem;
+  }
+  
+  .btn-primary {
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+}
 .btn-primary {
   background: var(--green); 
   color: var(--white);
@@ -1736,14 +1867,42 @@ footer::after {
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <!-- Imagen de fondo que cubre todo -->
-  <div class="hero-bg-image">
+  <!-- Imagen Desktop -->
+  <div class="hero-bg-image hero-bg-desktop">
     <img src="BANNER-PRINCIPAL.png" 
          alt="Event background" 
          loading="eager" 
          fetchpriority="high"
          decoding="async">
   </div>
+  
+  <!-- Imagen Mobile -->
+  <div class="hero-bg-image hero-bg-mobile">
+    <img src="HERO-800-X-11200-CHILE.png" 
+         alt="Event background mobile" 
+         loading="eager" 
+         fetchpriority="high"
+         decoding="async">
+  </div>
+
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-content">
+    <div class="hero-text-group">
+      <div class="hero-eyebrow">FERIA INTERNACIONAL DE POSGRADOS UNIVERSITARIOS</div>
+      <h1 class="hero-title">Santiago de Chile,<br>24 de Septiembre 2026</h1>
+      <div class="hero-location">Descubre opciones de estudio con universidades de todo el mundo en un solo lugar.</div>
+      <ul class="hero-features">
+        <li><i class="fas fa-check-circle"></i> Una tarde completa para resolver tus dudas</li>
+        <li><i class="fas fa-check-circle"></i> Más de 30 universidades internacionales</li>
+        <li><i class="fas fa-check-circle"></i> Compara programas y encuentra tu mejor opción</li>
+      </ul>
+      <div class="hero-actions">
+        <a href="#registro" class="btn-primary">Obtén tu acceso gratuito <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
   
   <!-- Overlay más suave -->
   <div class="hero-overlay"></div>
@@ -1957,13 +2116,18 @@ footer::after {
   </div>
 </section>
 
-<!-- UNIVERSIDADES ALIADAS — GRID ESTÁTICO (38 logos) -->
+<!-- 
+═══════════════════════════════════════════════════════
+UNIVERSIDADES ALIADAS — GRID ESTÁTICO (38 logos)
+[SECCIÓN OCULTA TEMPORALMENTE]
+═══════════════════════════════════════════════════════
+
 <section class="gallery-partners" id="universidades">
   <div class="partners-intro reveal">
     <h2 class="section-title">Descubre las mejores universidades y escuelas de negocios de EE. UU, el Reino Unido, Irlanda, Francia, Italia, Suiza, <span>Países Bajos y más!</span></h2>
   </div>
 
-<div class="allied-logos-grid" id="alliedLogosGrid">
+  <div class="allied-logos-grid" id="alliedLogosGrid">
     <div class="allied-logo" style="animation-delay:0.00s"><img src="logos/LOGO UNI-1.png" alt="Universidad Aliada 1" loading="lazy" decoding="async"></div>
     <div class="allied-logo" style="animation-delay:0.03s"><img src="logos/LOGO UNI-2.png" alt="Universidad Aliada 2" loading="lazy" decoding="async"></div>
     <div class="allied-logo" style="animation-delay:0.06s"><img src="logos/LOGO UNI-3.png" alt="Universidad Aliada 3" loading="lazy" decoding="async"></div>
@@ -2004,6 +2168,10 @@ footer::after {
     <div class="allied-logo" style="animation-delay:1.11s"><img src="logos/LOGO UNI-38.png" alt="Universidad Aliada 38" loading="lazy" decoding="async"></div>
   </div>
 </section>
+
+FIN DE SECCIÓN OCULTA
+═══════════════════════════════════════════════════════
+-->
 
 <!-- ÁREAS ACADÉMICAS -->
 <section class="academic-areas">
@@ -2127,8 +2295,12 @@ footer::after {
     </div>
   </div>
 </section>
+<!-- 
+═══════════════════════════════════════════════════════
+AGENDA / SPEAKERS
+[SECCIÓN OCULTA TEMPORALMENTE]
+═══════════════════════════════════════════════════════
 
-<!-- AGENDA / SPEAKERS -->
 <section class="schedule" id="agenda">
   <div class="schedule-grid">
     <div class="schedule-list reveal">
@@ -2188,6 +2360,9 @@ footer::after {
   </div>
 </section>
 
+FIN DE SECCIÓN OCULTA
+═══════════════════════════════════════════════════════
+-->
 <!-- CIERRE / MAPA -->
 <section class="closing" id="contact">
   <div class="closing-img reveal">
