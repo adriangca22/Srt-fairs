@@ -224,7 +224,7 @@ body:hover .cursor-outline { opacity: 1; }
     box-shadow: 0 1px 8px rgba(31,173,110,0.15);
   }
 }
-/* ─ HERO CON IMAGEN DE FONDO COMPLETA ── */
+/* ── HERO CON IMAGEN DE FONDO COMPLETA ── */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -250,7 +250,7 @@ body:hover .cursor-outline { opacity: 1; }
   object-position: center;
 }
 
-/* ✅ Mostrar desktop, ocultar mobile por defecto */
+/* ✅ Desktop visible, mobile oculto por defecto */
 .hero-bg-desktop {
   display: block;
 }
@@ -259,7 +259,8 @@ body:hover .cursor-outline { opacity: 1; }
   display: none;
 }
 
-/* Overlay: más fuerte a la izquierda (donde va el texto), se disuelve hacia la derecha */
+/* Overlay: más fuerte a la izquierda (donde va el texto), se disuelve hacia la derecha
+   para dejar la foto visible, tal como en la referencia */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -282,7 +283,7 @@ body:hover .cursor-outline { opacity: 1; }
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 120px 60px 80px 100px;
+  padding: 120px 60px 80px 100px; /* top right bottom left */
   text-align: left;
 }
 
@@ -299,7 +300,7 @@ body:hover .cursor-outline { opacity: 1; }
   font-weight: 500;
   color: rgba(255,255,255,0.95);
   letter-spacing: 0.08em;
-  white-space: nowrap;
+  white-space: nowrap; /* ◄--- Evita que el texto salte de línea */
   margin-bottom: 30px;
 }
 
@@ -307,11 +308,11 @@ body:hover .cursor-outline { opacity: 1; }
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 600;
-  white-space: nowrap;
+  white-space: nowrap; /* ◄--- Evita que el texto salte de línea */
   color: var(--white);
   line-height: 1.15;
   margin-bottom: 0;
-  max-width: 38ch;
+  max-width: 38ch; /* 'ch' mide el ancho basado en caracteres. Ve ajustando este número (18, 19, 20) hasta que rompa exacto */
 }
 
 .hero-location {
@@ -343,6 +344,7 @@ body:hover .cursor-outline { opacity: 1; }
   font-weight: 600;
 }
 
+/* CHECKS MÁS GRANDES Y BLANCOS */
 .hero-features li i {
   color: var(--white);
   font-size: 1.4rem;
@@ -479,96 +481,6 @@ body:hover .cursor-outline { opacity: 1; }
   .btn-primary {
     padding: 14px 24px;
     font-size: 14px;
-  }
-}
-.btn-primary {
-  background: var(--green); 
-  color: var(--white);
-  padding: 18px 36px; 
-  border-radius: 100px; 
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  font-weight: 700; 
-  text-decoration: none; 
-  border: none; 
-  cursor: pointer;
-  display: inline-flex; 
-  align-items: center; 
-  gap: 10px;
-  transition: all 0.3s var(--transition);
-  box-shadow: 0 6px 24px rgba(31,173,110,0.35);
-  white-space: nowrap;
-  margin-top: 50px;
-}
-
-.btn-primary:hover { 
-  background: var(--green-light); 
-  transform: translateY(-3px); 
-  box-shadow: 0 10px 32px rgba(31,173,110,0.45);
-}
-
-/* ══ RESPONSIVE HERO ══ */
-@media (max-width: 1024px) {
-  .hero-content {
-    padding: 100px 40px 60px 80px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-content {
-    padding: 120px 30px 50px 30px;
-    text-align: center;
-  }
-
-  .hero-text-group {
-    max-width: 100%;
-    align-items: center;
-  }
-  
-  .hero-features {
-    max-width: 500px;
-    margin: 0 auto 32px;
-  }
-  
-  .hero-features li {
-    justify-content: center;
-  }
-  
-  .hero-actions {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-content {
-    padding: 100px 20px 40px 20px;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .hero-location {
-    font-size: 1.5rem;
-  }
-  
-  .hero-eyebrow {
-    font-size: 0.9rem;
-  }
-  
-  .hero-features li {
-    font-size: 1rem;
-  }
-  
-  .hero-features li i {
-    font-size: 1.2rem;
-  }
-  
-  .btn-primary {
-    padding: 14px 24px;
-    font-size: 14px;
-    width: 100%;
-    justify-content: center;
   }
 }
 /* ── SECTIONS ── */
@@ -1865,7 +1777,6 @@ footer::after {
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <!-- Imagen Desktop -->
   <div class="hero-bg-image hero-bg-desktop">
@@ -1899,30 +1810,6 @@ footer::after {
       </ul>
       <div class="hero-actions">
         <a href="#registro" class="btn-primary">Obtén tu acceso gratuito <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
-  
-  <!-- Overlay más suave -->
-  <div class="hero-overlay"></div>
-  
-  <!-- Contenido centrado -->
-  <div class="hero-content">
-    <div class="hero-text-group">
-      <p class="hero-eyebrow">FERIA INTERNACIONAL DE POSGRADOS UNIVERSITARIOS</p>
-      <h1 class="hero-title">Santiago de Chile,</h1>
-       <h1 class="hero-title">24 de Septiembre 2026</h1>
-      <h2 class="hero-location">Descubre opciones de estudio con universidades de todo el mundo en un solo lugar.</h2>
-      <ul class="hero-features">
-        <li><i class="fa-solid fa-check-circle"></i> Una tarde completa para resolver tus dudas</li>
-        <li><i class="fa-solid fa-check-circle"></i> Más de 30 universidades internacionales</li>
-        <li><i class="fa-solid fa-check-circle"></i> Compara programas y encuentra tu mejor opción</li>
-      </ul>
-      <div class="hero-actions">
-        <a href="#registro" class="btn-primary">
-          Entrada gratuita - Cupos limitados
-        </a>
       </div>
     </div>
   </div>
