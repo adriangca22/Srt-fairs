@@ -122,20 +122,20 @@ body:hover .cursor-outline { opacity: 1; }
   left: 0;
   right: 0;
   z-index: 100;
-  height: 72px; /* Aumentado ligeramente para dar más espacio */
+  height: 96px;
   background: var(--white);
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .site-header-inner {
   height: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 350px;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .site-logo {
@@ -146,7 +146,7 @@ body:hover .cursor-outline { opacity: 1; }
 
 .site-logo img {
   display: block;
-  height: 48px; /* Aumentado de 38px */
+  height: 60px; /* logo más grande */
   width: auto;
   object-fit: contain;
 }
@@ -157,13 +157,13 @@ body:hover .cursor-outline { opacity: 1; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 36px;
-  padding: 0 20px;
+  height: 38px;
+  padding: 0 22px;
   border-radius: 100px;
   background: var(--green);
   color: var(--white);
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -180,23 +180,23 @@ body:hover .cursor-outline { opacity: 1; }
 /* ══ RESPONSIVE PARA MÓVIL ══ */
 @media (max-width: 768px) {
   .site-header {
-    height: 64px; /* Aumentado de 58px */
+    height: 72px;
   }
   
   .site-header-inner {
-    padding: 0 16px;
-    gap: 16px;
-    justify-content: center;
+    padding: 0 20px;
+    gap: 10px;
+    justify-content: space-between;
   }
   
   .site-logo img {
-    height: 38px; /* Aumentado de 30px */
+    height: 42px;
   }
   
   .site-header-cta {
-    height: 26px;
-    padding: 0 10px;
-    font-size: 9px;
+    height: 28px;
+    padding: 0 12px;
+    font-size: 10px;
     border-radius: 30px;
     box-shadow: 0 2px 12px rgba(31,173,110,0.2);
   }
@@ -204,22 +204,22 @@ body:hover .cursor-outline { opacity: 1; }
 
 @media (max-width: 480px) {
   .site-header {
-    height: 56px; /* Aumentado de 50px */
+    height: 64px;
   }
   
   .site-header-inner {
-    padding: 0 12px;
-    gap: 10px;
+    padding: 0 16px;
+    gap: 6px;
   }
   
   .site-logo img {
-    height: 32px; /* Aumentado de 24px */
+    height: 36px;
   }
   
   .site-header-cta {
-    height: 22px;
-    padding: 0 8px;
-    font-size: 7.5px;
+    height: 24px;
+    padding: 0 10px;
+    font-size: 8.5px;
     border-radius: 20px;
     box-shadow: 0 1px 8px rgba(31,173,110,0.15);
   }
@@ -227,7 +227,7 @@ body:hover .cursor-outline { opacity: 1; }
 /* ── HERO CON IMAGEN DE FONDO COMPLETA ── */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 78vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -268,11 +268,11 @@ body:hover .cursor-outline { opacity: 1; }
   width: 100%;
   height: 100%;
   background: linear-gradient(100deg,
-    rgba(10,22,40,0.82) 0%,
-    rgba(10,22,40,0.72) 28%,
-    rgba(10,22,40,0.42) 48%,
-    rgba(10,22,40,0.12) 65%,
-    rgba(10,22,40,0.05) 100%);
+    rgba(10,22,40,0.88) 0%,
+    rgba(10,22,40,0.78) 32%,
+    rgba(10,22,40,0.5) 55%,
+    rgba(10,22,40,0.15) 72%,
+    rgba(10,22,40,0.06) 100%);
   z-index: 1;
 }
 
@@ -283,7 +283,7 @@ body:hover .cursor-outline { opacity: 1; }
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 120px 60px 80px 100px; /* top right bottom left */
+  padding: 96px 60px 60px 100px; /* top right bottom left */
   text-align: left;
 }
 
@@ -296,32 +296,33 @@ body:hover .cursor-outline { opacity: 1; }
 
 .hero-eyebrow {
   font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   font-weight: 500;
-  color: rgba(255,255,255,0.95);
-  letter-spacing: 0.08em;
-  white-space: nowrap; /* ◄--- Evita que el texto salte de línea */
-  margin-bottom: 30px;
+  color: rgba(255,255,255,0.88);
+  letter-spacing: 0;
+  white-space: nowrap;
+  margin-bottom: 12px;
 }
 
 .hero-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 600;
-  white-space: nowrap; /* ◄--- Evita que el texto salte de línea */
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+  font-weight: 800;
+  white-space: nowrap;
   color: var(--white);
-  line-height: 1.15;
-  margin-bottom: 0;
-  max-width: 38ch; /* 'ch' mide el ancho basado en caracteres. Ve ajustando este número (18, 19, 20) hasta que rompa exacto */
+  line-height: 1.18;
+  margin-bottom: 14px;
+  max-width: 38ch;
 }
 
 .hero-location {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-  font-weight: 800;
-  color: var(--white);
-  line-height: 1.2;
-  margin-bottom: 24px;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-weight: 500;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.5;
+  max-width: 46ch;
+  margin-bottom: 20px;
 }
 
 .hero-features {
@@ -335,26 +336,63 @@ body:hover .cursor-outline { opacity: 1; }
 
 .hero-features li {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: rgba(255,255,255,0.95);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  font-weight: 600;
+  gap: 12px;
+  font-weight: 500;
 }
 
-/* CHECKS MÁS GRANDES Y BLANCOS */
+/* CHECKS */
 .hero-features li i {
-  color: var(--white);
-  font-size: 1.4rem;
+  color: var(--green-light);
+  font-size: 1.1rem;
   flex-shrink: 0;
 }
 
 .hero-actions {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  gap: 14px;
   flex-wrap: wrap;
+}
+
+/* ══ ÍCONOS DE CONTACTO EN EL HERO ══ */
+.hero-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--white);
+  font-size: 19px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: all 0.3s var(--transition);
+}
+.hero-social-icon:hover {
+  background: var(--green);
+  border-color: var(--green);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(31,173,110,0.4);
+}
+.hero-social-icon.whatsapp:hover {
+  background: #25D366;
+  border-color: #25D366;
+  box-shadow: 0 8px 24px rgba(37,211,102,0.4);
 }
 
 .btn-primary {
@@ -374,7 +412,7 @@ body:hover .cursor-outline { opacity: 1; }
   transition: all 0.3s var(--transition);
   box-shadow: 0 6px 24px rgba(31,173,110,0.35);
   white-space: nowrap;
-  margin-top: 50px;
+  margin-top: 12px;
 }
 
 .btn-primary:hover { 
@@ -411,9 +449,9 @@ body:hover .cursor-outline { opacity: 1; }
   }
   
   .hero-eyebrow {
-    font-size: 18px;
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
     white-space: normal;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
   
   .hero-title {
@@ -446,6 +484,11 @@ body:hover .cursor-outline { opacity: 1; }
   .hero-actions {
     justify-content: center;
     width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-social {
+    justify-content: center;
   }
   
   .btn-primary {
@@ -463,7 +506,7 @@ body:hover .cursor-outline { opacity: 1; }
   }
   
   .hero-eyebrow {
-    font-size: 16px;
+    font-size: 1.1rem;
   }
   
   .hero-title {
@@ -484,7 +527,7 @@ body:hover .cursor-outline { opacity: 1; }
   }
 }
 /* ── SECTIONS ── */
-section { padding: 100px 60px; width: 100%; }
+section { padding: 68px 60px; width: 100%; }
 .section-tag {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 13px; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase;
@@ -521,7 +564,7 @@ section { padding: 100px 60px; width: 100%; }
 /* ── EVENT INFO (White Background Version) ── */
 .event-info { 
   background: var(--white); 
-  padding: 80px 0;
+  padding: 56px 0;
   position: relative;
 }
 
@@ -550,128 +593,16 @@ section { padding: 100px 60px; width: 100%; }
   overflow: hidden;
 }
 
-/* Video Placeholder Link */
-.video-placeholder {
+/* Video en autoplay */
+.event-video-player {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.video-placeholder:hover {
-  transform: scale(1.02);
-  box-shadow: 0 25px 70px rgba(31, 173, 110, 0.3);
-}
-
-/* Thumbnail Image */
-.video-thumbnail {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.video-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-}
-
-/* Dark Overlay */
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(10, 22, 40, 0.4), rgba(10, 22, 40, 0.7));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  transition: all 0.3s ease;
-}
-
-.video-placeholder:hover .video-overlay {
-  background: linear-gradient(to bottom, rgba(10, 22, 40, 0.3), rgba(10, 22, 40, 0.6));
-}
-
-/* Play Icon */
-.play-icon {
-  font-size: 80px;
-  color: white;
-  animation: pulse 2s ease-in-out infinite;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
-  transition: all 0.3s ease;
-}
-
-.video-placeholder:hover .play-icon {
-  transform: scale(1.1);
-  color: var(--green-light);
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.1); opacity: 1; }
-}
-
-/* Video Content */
-.video-content {
-  text-align: center;
-  color: white;
-  padding: 0 20px;
-}
-
-.video-content h3 {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 0 8px 0;
-  color: white;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.video-content p {
-  font-size: 15px;
-  margin: 0;
-  opacity: 0.95;
-  font-weight: 500;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Video Player Container (oculto inicialmente) */
-.video-player-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  z-index: 5;
-}
-
-.video-player-container.active {
-  display: block;
-}
-
-.video-player-container iframe,
-.video-player-container video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   border: none;
+  background: var(--navy);
 }
 /* Event Details */
 .event-detail-list { 
@@ -750,18 +681,6 @@ section { padding: 100px 60px; width: 100%; }
     padding: 60px 0;
   }
   
-  .play-icon {
-    font-size: 60px;
-  }
-  
-  .video-content h3 {
-    font-size: 20px;
-  }
-  
-  .video-content p {
-    font-size: 14px;
-  }
-  
   .event-detail-row {
     padding: 16px;
     gap: 16px;
@@ -789,23 +708,30 @@ section { padding: 100px 60px; width: 100%; }
 .register-grid { 
   display: grid; 
   grid-template-columns: 1fr 1fr; 
-  gap: 48px; 
-  align-items: start;
+  gap: 32px; 
+  align-items: stretch;
   max-width: 1040px;
   margin: 48px auto 0;
   padding: 0 20px;
 }
-.register-left {
-  display: flex;
-  flex-direction: column;
+.register-images-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
+  max-width: 1040px;
+  margin: 32px auto 0;
+  padding: 0 20px;
 }
 
 /* ══ TARJETA DE TEXTO ══ */
 .register-card {
   background: var(--navy);
   border-radius: var(--radius);
-  padding: 32px 36px;
+  padding: 40px 36px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .register-card h3 {
   font-family: 'Montserrat', sans-serif;
@@ -826,19 +752,12 @@ section { padding: 100px 60px; width: 100%; }
   font-weight: 500;
 }
 
-/* ══ IMÁGENES STACKED ══ */
-.register-images {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+/* ══ IMÁGENES (fila debajo de las tarjetas) ══ */
 .register-img-top,
 .register-img-bottom {
   border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 4/3;
-  max-width: 420px;
-  margin: 0 auto;
 }
 .register-img-top img,
 .register-img-bottom img {
@@ -949,10 +868,16 @@ section { padding: 100px 60px; width: 100%; }
 @media (max-width: 960px) {
   .register-grid { 
     grid-template-columns: 1fr; 
-    gap: 40px;
+    gap: 24px;
   }
   .register-card h3 {
     font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .register-images-row {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -968,10 +893,102 @@ section { padding: 100px 60px; width: 100%; }
   }
 }
 
+/* ══ MODAL DE REGISTRO (pop-up, CSS puro con checkbox hack) ══ */
+.modal-toggle { display: none; }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(10, 22, 40, 0.62);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s var(--transition);
+}
+
+.modal-toggle:checked ~ .modal-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius);
+  max-width: 640px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 44px;
+  transform: translateY(24px) scale(0.98);
+  transition: transform 0.35s var(--transition);
+  box-shadow: 0 30px 80px rgba(10,22,40,0.35);
+}
+
+.modal-toggle:checked ~ .modal-overlay .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--off-white);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.25s var(--transition);
+}
+.modal-close:hover {
+  background: var(--green);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+.register-cta-card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  text-align: left;
+  height: 100%;
+  justify-content: center;
+}
+.register-cta-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.register-cta-card p {
+  font-size: 15px;
+  color: var(--gray-text);
+  line-height: 1.65;
+}
+.register-cta-card .btn-primary { margin-top: 4px; }
+
+@media (max-width: 640px) {
+  .modal-box { padding: 28px; }
+}
+
 /* ── ÁREAS ACADÉMICAS ── */
 .academic-areas { 
   background: var(--white);
-  padding: 100px 60px;
+  padding: 68px 60px;
 }
 .areas-grid {
   display: grid; 
@@ -1021,7 +1038,7 @@ section { padding: 100px 60px; width: 100%; }
 /* ── PROCESO DE REGISTRO ── */
 .process { 
   background: var(--off-white);
-  padding: 100px 60px;
+  padding: 68px 60px;
 }
 .process-grid { 
   display: grid; 
@@ -1035,14 +1052,24 @@ section { padding: 100px 60px; width: 100%; }
 .process-notes { 
   display: flex; 
   flex-direction: column; 
-  gap: 22px; 
+  gap: 20px; 
   margin-bottom: 28px; 
+}
+.process-note {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.process-note .step-icon {
+  width: 60px;
+  height: 60px;
 }
 .process-note h4 { 
   font-size: 17px; 
   font-weight: 700; 
   color: var(--navy); 
   margin-bottom: 6px; 
+  line-height: 1.4;
 }
 .process-note p { 
   font-size: 15.5px; 
@@ -1106,7 +1133,7 @@ section { padding: 100px 60px; width: 100%; }
   background: var(--white); 
   position: relative; 
   overflow: hidden;
-  padding: 100px 60px;
+  padding: 68px 60px;
 }
 .experience::before {
   content: ''; 
@@ -1128,7 +1155,7 @@ section { padding: 100px 60px; width: 100%; }
 }
 .experience-grid {
   display: grid; 
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(3, 1fr); 
   gap: 24px; 
   max-width: 1040px;
   margin: 48px auto 44px;
@@ -1144,34 +1171,39 @@ section { padding: 100px 60px; width: 100%; }
   transition: all 0.35s var(--transition);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 36px 24px;
 }
 .experience-card:hover { 
   transform: translateY(-6px) !important; 
   border-color: rgba(31,173,110,0.35); 
   box-shadow: 0 12px 32px rgba(31,173,110,0.12);
 }
-.experience-card-img { 
-  height: 220px; 
-  overflow: hidden;
+.experience-card-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  background: rgba(31,173,110,0.08);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  transition: all 0.3s var(--transition);
   flex-shrink: 0;
 }
-.experience-card-img img { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover; 
-  display: block; 
-  transition: transform 0.5s var(--transition); 
-}
-.experience-card:hover .experience-card-img img { 
-  transform: scale(1.08); 
+.experience-card:hover .experience-card-icon {
+  background: var(--green);
+  color: var(--white);
+  transform: scale(1.08) rotate(-4deg);
 }
 .experience-card p { 
-  padding: 20px; 
-  font-size: 16px; 
+  font-size: 15.5px; 
   color: var(--navy); 
   line-height: 1.6;
   font-weight: 400;
-  flex: 1;
 }
 .experience-cta { 
   text-align: center; 
@@ -1184,9 +1216,6 @@ section { padding: 100px 60px; width: 100%; }
   .experience-grid { 
     grid-template-columns: repeat(2, 1fr); 
   }
-  .experience-card-img {
-    height: 200px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1197,62 +1226,12 @@ section { padding: 100px 60px; width: 100%; }
     grid-template-columns: 1fr; 
     gap: 20px;
   }
-  .experience-card-img {
-    height: 220px;
-  }
-}
-
-/* ── DUDAS (checklist) ── */
-.faq-check { 
-  background: var(--white);
-  padding: 100px 60px;
-}
-.faq-check-grid { 
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  gap: 64px; 
-  align-items: center; 
-  max-width: 1040px;
-  margin: 48px auto 0;
-  padding: 0 20px;
-}
-.faq-check-img { 
-  border-radius: var(--radius); 
-  overflow: hidden; 
-  aspect-ratio: 4/3.2; 
-  background: var(--gray-light); 
-}
-.faq-check-img img { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover; 
-  display: block; 
-}
-.faq-check-list { 
-  list-style: none; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 14px; 
-  margin-top: 24px; 
-}
-.faq-check-list li { 
-  display: flex; 
-  gap: 12px; 
-  align-items: center; 
-  font-size: 17px; 
-  color: var(--navy); 
-  font-weight: 400; 
-}
-.faq-check-list li i { 
-  color: var(--green); 
-  font-size: 17px; 
-  flex-shrink: 0; 
 }
 
 /* ── AGENDA / SPEAKERS ── */
 .schedule { 
   background: var(--off-white);
-  padding: 100px 60px;
+  padding: 68px 60px;
 }
 .schedule-grid { 
   display: grid; 
@@ -1389,7 +1368,7 @@ section { padding: 100px 60px; width: 100%; }
   background: var(--white); 
   position: relative; 
   overflow: hidden;
-  padding: 100px 60px;
+  padding: 68px 60px;
 }
 .closing-img { 
   border-radius: var(--radius); 
@@ -1451,7 +1430,7 @@ section { padding: 100px 60px; width: 100%; }
   background: var(--white); 
   overflow: hidden; 
   position: relative;
-  padding: 100px 60px;
+  padding: 68px 60px;
 }
 .partners-intro { 
   text-align: center; 
@@ -1567,7 +1546,7 @@ footer::after {
 
 .footer-offices {
   display: grid;
-  grid-template-columns: repeat(3, 1fr) auto;
+  grid-template-columns: repeat(2, 1fr) auto;
   gap: 48px;
   align-items: start;
   justify-content: center;
@@ -1704,14 +1683,13 @@ footer::after {
 
 @media (max-width: 960px) {
   section { padding: 72px 32px; }
-  .academic-areas, .process, .faq-check, .schedule, .closing, .gallery-partners {
+  .academic-areas, .process, .schedule, .closing, .gallery-partners {
     padding: 72px 32px;
   }
   .hero-content { padding: 0 32px; }
   .event-info-grid { grid-template-columns: 1fr; gap: 40px; }
   .register-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; gap: 36px; }
-  .faq-check-grid { grid-template-columns: 1fr; gap: 32px; }
   .schedule-grid { grid-template-columns: 1fr; gap: 36px; }
   .closing-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-offices {
@@ -1730,7 +1708,7 @@ footer::after {
 
 @media (max-width: 768px) {
   section { padding: 60px 20px; }
-  .academic-areas, .process, .faq-check, .schedule, .closing, .gallery-partners {
+  .academic-areas, .process, .schedule, .closing, .gallery-partners {
     padding: 60px 20px;
   }
   .hero-content { padding: 0 20px; }
@@ -1767,30 +1745,33 @@ footer::after {
 </head>
 <body>
 
+<!-- Toggle del modal de registro (CSS puro, sin JS) -->
+<input type="checkbox" id="registerModalToggle" class="modal-toggle">
+
 <!-- NAV -->
 <header class="site-header" id="navbar">
   <div class="site-header-inner">
     <a href="#home" class="site-logo">
-      <img src="Group 142.png" alt="SRT CONNECTED" loading="lazy" decoding="async">
+      <img src="Group 142.png" alt="SRT CONNECTED Santiago" loading="lazy" decoding="async">
     </a>
-    <a href="#registro" class="site-header-cta">Obtén tu acceso gratuito</a>
+    <label for="registerModalToggle" class="site-header-cta">Obtén tu acceso gratuito</label>
   </div>
 </header>
 
 <section class="hero" id="home">
-  <!-- Imagen Desktop -->
+  <!-- Imagen Desktop: SANTIAGO — reemplazar por la foto de cada ciudad cuando esté lista -->
   <div class="hero-bg-image hero-bg-desktop">
     <img src="BANNER-PRINCIPAL.png" 
-         alt="Event background" 
+         alt="Feria SRT ConnectED Santiago" 
          loading="eager" 
          fetchpriority="high"
          decoding="async">
   </div>
   
-  <!-- Imagen Mobile -->
+  <!-- Imagen Mobile: SANTIAGO — reemplazar por la foto de cada ciudad cuando esté lista -->
   <div class="hero-bg-image hero-bg-mobile">
     <img src="HERO-800-X-11200-CHILE.png" 
-         alt="Event background mobile" 
+         alt="Feria SRT ConnectED Santiago mobile" 
          loading="eager" 
          fetchpriority="high"
          decoding="async">
@@ -1800,8 +1781,8 @@ footer::after {
   
   <div class="hero-content">
     <div class="hero-text-group">
-      <div class="hero-eyebrow">FERIA INTERNACIONAL DE POSGRADOS UNIVERSITARIOS</div>
-      <h1 class="hero-title">Santiago de Chile,<br>24 de Septiembre 2026</h1>
+      <div class="hero-eyebrow">Feria internacional de posgrados universitarios</div>
+      <h1 class="hero-title">Santiago de Chile,<br>24 de septiembre 2026</h1>
       <div class="hero-location">Descubre opciones de estudio con universidades de todo el mundo en un solo lugar.</div>
       <ul class="hero-features">
         <li><i class="fas fa-check-circle"></i> Una tarde completa para resolver tus dudas</li>
@@ -1809,7 +1790,11 @@ footer::after {
         <li><i class="fas fa-check-circle"></i> Compara programas y encuentra tu mejor opción</li>
       </ul>
       <div class="hero-actions">
-        <a href="#registro" class="btn-primary">Obtén tu acceso gratuito <i class="fas fa-arrow-right"></i></a>
+        <label for="registerModalToggle" class="btn-primary">Obtén tu acceso gratuito <i class="fas fa-arrow-right"></i></label>
+        <div class="hero-social">
+          <a href="https://wa.me/56900000000" target="_blank" rel="noopener" class="hero-social-icon whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="mailto:info@srtfairs.com" class="hero-social-icon" aria-label="Correo"><i class="fa-solid fa-envelope"></i></a>
+        </div>
       </div>
     </div>
   </div>
@@ -1820,40 +1805,18 @@ footer::after {
     <div class="event-video reveal">
       <div class="video-wrapper">
         
-        <!-- Placeholder con thumbnail (visible inicialmente) -->
-        <div class="video-placeholder" id="videoPlaceholder">
-          <div class="video-thumbnail">
-            <!-- Usa una imagen de thumbnail de YouTube o sube la tuya -->
-            <img src="https://img.youtube.com/vi/2Izszg7vWWQ/maxresdefault.jpg" alt="Video del evento">
-          </div>
-          <div class="video-overlay">
-            <i class="fa-brands fa-youtube play-icon"></i>
-            <div class="video-content">
-              <h3>Ver video del evento</h3>
-            
-            </div>
-          </div>
-        </div>
-        
-        <!-- Contenedor del video (se muestra al hacer click) -->
-        <div class="video-player-container" id="videoPlayerContainer">
-          <!-- OPCIÓN 1: Si usas File Garden u otro hosting con iframe -->
-          <iframe 
-            id="videoFrame"
-            src="" 
-            title="Video del evento"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-          
-          <!-- OPCIÓN 2: Si tienes el video directo (mp4) -->
-          <!-- 
-          <video id="videoElement" controls>
-            <source src="URL_DE_TU_VIDEO.mp4" type="video/mp4">
-            Tu navegador no soporta el tag de video.
-          </video>
-          -->
-        </div>
+        <!-- Video en autoplay: los navegadores bloquean el audio automático sin interacción previa del usuario, así que cae a silenciado y se activa el sonido con la primera interacción en la página -->
+        <video
+          class="event-video-player"
+          poster="https://img.youtube.com/vi/2Izszg7vWWQ/maxresdefault.jpg"
+          autoplay
+          loop
+          playsinline
+          controls
+          preload="metadata">
+          <source src="https://file.garden/aicj-LWBZTmGA5zi/video_1f7143eaf61d.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
         
       </div>
     </div>
@@ -1890,67 +1853,41 @@ footer::after {
   </div>
 </section>
 
-<!-- JavaScript para reproducir el video -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const placeholder = document.getElementById('videoPlaceholder');
-    const playerContainer = document.getElementById('videoPlayerContainer');
-    const videoFrame = document.getElementById('videoFrame');
-    
-    // URL del video - CAMBIA ESTO según donde lo subas
-    // OPCIÓN 1: File Garden (cuando lo subas)
-    // const videoUrl = 'https://file.garden/YOUR_VIDEO_ID/video.mp4';
-    
-    // OPCIÓN 2: YouTube embed (si decides usarlo)
-    const videoUrl = 'https://file.garden/aicj-LWBZTmGA5zi/video_1f7143eaf61d.mp4';
-    
-    // OPCIÓN 3: Video directo MP4
-    // const videoUrl = 'URL_DE_TU_VIDEO.mp4';
-    
-    placeholder.addEventListener('click', function() {
-      // Ocultar placeholder
-      placeholder.style.display = 'none';
-      
-      // Mostrar reproductor
-      playerContainer.classList.add('active');
-      
-      // Cargar y reproducir video
-      if (videoFrame) {
-        videoFrame.src = videoUrl;
-      }
-      
-      // Si usas video tag en lugar de iframe:
-      // const videoElement = document.getElementById('videoElement');
-      // if (videoElement) {
-      //   videoElement.play();
-      // }
-    });
-  });
-</script>
 <!-- REGISTRO -->
 <section class="register" id="registro">
   <div class="register-grid">
-    <div class="register-left reveal">
-      <div class="register-card">
-        <h3>¡Ven a conectar con representantes de más de <span>30 universidades</span> de todo el mundo!</h3>
-        <p>Rellena el formulario y obtén tu código QR de acceso gratuito de forma automática</p>
-      </div>
-      <div class="register-images">
-        <div class="register-img-top">
-          <img src="IMAGEN-1.png" alt="Estudiantes conversando en la feria" 
-               loading="lazy" decoding="async">
-        </div>
-        <div class="register-img-bottom">
-          <img src="IMAGEN-2 (1).png" alt="Credenciales del evento" 
-               loading="lazy" decoding="async">
-        </div>
-      </div>
+    <div class="register-card reveal">
+      <h3>¡Ven a conectar con representantes de más de <span>30 universidades</span> de todo el mundo!</h3>
+      <p>Rellena el formulario y obtén tu código QR de acceso gratuito de forma automática</p>
     </div>
 
-    <form class="register-form reveal">
-      <div class="register-form-logo" style="text-align:center; margin-bottom:24px;">
-        <img src="LOGO-ORIGINAL.png" alt="SRT CONNECTED" style="height:64px; object-fit:contain;" loading="lazy" decoding="async">
+    <div class="register-cta-card reveal">
+      <div style="text-align:center; width:100%;">
+        <img src="LOGO-ORIGINAL.png" alt="SRT CONNECTED" style="height:56px; object-fit:contain; margin-bottom:20px;" loading="lazy" decoding="async">
       </div>
+      <h3>Reserva tu lugar en unos segundos</h3>
+      <p>Completa el formulario y recibe automáticamente tu código QR de acceso gratuito. ¡Cupos limitados!</p>
+      <label for="registerModalToggle" class="btn-primary">Regístrate ahora <i class="fa-solid fa-arrow-right"></i></label>
+    </div>
+  </div>
+
+  <div class="register-images-row reveal">
+    <div class="register-img-top">
+      <img src="IMAGEN-1.png" alt="Estudiantes conversando en la feria" 
+           loading="lazy" decoding="async">
+    </div>
+    <div class="register-img-bottom">
+      <img src="IMAGEN-2 (1).png" alt="Credenciales del evento" 
+           loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- MODAL DE REGISTRO -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <label for="registerModalToggle" class="modal-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></label>
+    <form class="register-form" style="border:none; padding:0;">
       <div class="register-form-header">
         <h3>Inscríbete en la Feria Internacional de Posgrados SRT</h3>
         <p>Completa el formulario y recibe automáticamente tu código QR de acceso gratuito. Para que disfrutes al máximo la feria, completa tus datos correctamente. ¡Te tomará solo unos segundos!</p>
@@ -2001,64 +1938,7 @@ footer::after {
       <button type="submit" class="btn-submit">Enviar</button>
     </form>
   </div>
-</section>
-
-<!-- 
-═══════════════════════════════════════════════════════
-UNIVERSIDADES ALIADAS — GRID ESTÁTICO (38 logos)
-[SECCIÓN OCULTA TEMPORALMENTE]
-═══════════════════════════════════════════════════════
-
-<section class="gallery-partners" id="universidades">
-  <div class="partners-intro reveal">
-    <h2 class="section-title">Descubre las mejores universidades y escuelas de negocios de EE. UU, el Reino Unido, Irlanda, Francia, Italia, Suiza, <span>Países Bajos y más!</span></h2>
-  </div>
-
-  <div class="allied-logos-grid" id="alliedLogosGrid">
-    <div class="allied-logo" style="animation-delay:0.00s"><img src="logos/LOGO UNI-1.png" alt="Universidad Aliada 1" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.03s"><img src="logos/LOGO UNI-2.png" alt="Universidad Aliada 2" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.06s"><img src="logos/LOGO UNI-3.png" alt="Universidad Aliada 3" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.09s"><img src="logos/LOGO UNI-4.png" alt="Universidad Aliada 4" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.12s"><img src="logos/LOGO UNI-5.png" alt="Universidad Aliada 5" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.15s"><img src="logos/LOGO UNI-6.png" alt="Universidad Aliada 6" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.18s"><img src="logos/LOGO UNI-7.png" alt="Universidad Aliada 7" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.21s"><img src="logos/LOGO UNI-8.png" alt="Universidad Aliada 8" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.24s"><img src="logos/LOGO UNI-9.png" alt="Universidad Aliada 9" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.27s"><img src="logos/LOGO UNI-10.png" alt="Universidad Aliada 10" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.30s"><img src="logos/LOGO UNI-11.png" alt="Universidad Aliada 11" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.33s"><img src="logos/LOGO UNI-12.png" alt="Universidad Aliada 12" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.36s"><img src="logos/LOGO UNI-13.png" alt="Universidad Aliada 13" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.39s"><img src="logos/LOGO UNI-14.png" alt="Universidad Aliada 14" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.42s"><img src="logos/LOGO UNI-15.png" alt="Universidad Aliada 15" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.45s"><img src="logos/LOGO UNI-16.png" alt="Universidad Aliada 16" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.48s"><img src="logos/LOGO UNI-17.png" alt="Universidad Aliada 17" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.51s"><img src="logos/LOGO UNI-18.png" alt="Universidad Aliada 18" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.54s"><img src="logos/LOGO UNI-19.png" alt="Universidad Aliada 19" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.57s"><img src="logos/LOGO UNI-20.png" alt="Universidad Aliada 20" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.60s"><img src="logos/LOGO UNI-21.png" alt="Universidad Aliada 21" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.63s"><img src="logos/LOGO UNI-22.png" alt="Universidad Aliada 22" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.66s"><img src="logos/LOGO UNI-23.png" alt="Universidad Aliada 23" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.69s"><img src="logos/LOGO UNI-24.png" alt="Universidad Aliada 24" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.72s"><img src="logos/LOGO UNI-25.png" alt="Universidad Aliada 25" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.75s"><img src="logos/LOGO UNI-26.png" alt="Universidad Aliada 26" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.78s"><img src="logos/LOGO UNI-27.png" alt="Universidad Aliada 27" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.81s"><img src="logos/LOGO UNI-28.png" alt="Universidad Aliada 28" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.84s"><img src="logos/LOGO UNI-29.png" alt="Universidad Aliada 29" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.87s"><img src="logos/LOGO UNI-30.png" alt="Universidad Aliada 30" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.90s"><img src="logos/LOGO UNI-31.png" alt="Universidad Aliada 31" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.93s"><img src="logos/LOGO UNI-32.png" alt="Universidad Aliada 32" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.96s"><img src="logos/LOGO UNI-33.png" alt="Universidad Aliada 33" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:0.99s"><img src="logos/LOGO UNI-34.png" alt="Universidad Aliada 34" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:1.02s"><img src="logos/LOGO UNI-35.png" alt="Universidad Aliada 35" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:1.05s"><img src="logos/LOGO UNI-36.png" alt="Universidad Aliada 36" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:1.08s"><img src="logos/LOGO UNI-37.png" alt="Universidad Aliada 37" loading="lazy" decoding="async"></div>
-    <div class="allied-logo" style="animation-delay:1.11s"><img src="logos/LOGO UNI-38.png" alt="Universidad Aliada 38" loading="lazy" decoding="async"></div>
-  </div>
-</section>
-
-FIN DE SECCIÓN OCULTA
-═══════════════════════════════════════════════════════
--->
+</div>
 
 <!-- ÁREAS ACADÉMICAS -->
 <section class="academic-areas">
@@ -2098,12 +1978,18 @@ FIN DE SECCIÓN OCULTA
     <div class="reveal">
       <div class="process-notes">
         <div class="process-note">
-          <h4>Cupos limitados</h4>
-          <p>El registro exitoso asegura tu postulación, pero el ingreso al salón estará sujeto a la capacidad del lugar. ¡Te recomendamos llegar temprano!</p>
+          <div class="step-icon"><i class="fa-solid fa-users"></i></div>
+          <div>
+            <h4>Cupos limitados</h4>
+            <p>El registro exitoso asegura tu postulación, pero el ingreso al salón estará sujeto a la capacidad del lugar. ¡Te recomendamos llegar temprano!</p>
+          </div>
         </div>
         <div class="process-note">
-          <h4>Acceso obligatorio con tu QR personal</h4>
-          <p>Para entrar al evento, deberás presentar en la entrada tu código QR personal (digital en tu celular o impreso).</p>
+          <div class="step-icon"><i class="fa-solid fa-qrcode"></i></div>
+          <div>
+            <h4>Acceso obligatorio con tu QR personal</h4>
+            <p>Para entrar al evento, deberás presentar en la entrada tu código QR personal (digital en tu celular o impreso).</p>
+          </div>
         </div>
       </div>
       <div class="process-img">
@@ -2139,117 +2025,34 @@ FIN DE SECCIÓN OCULTA
   </div>
   <div class="experience-grid">
     <div class="experience-card">
-      <div class="experience-card-img"><img src="IMAGEN-CUADRO-CON-TEXTO-1.png" alt="Conversar con directores de admisión" loading="lazy" decoding="async"></div>
+      <div class="experience-card-icon"><i class="fa-solid fa-comments"></i></div>
       <p>Conversar directo con los directores de admisión de las mejores universidades del mundo.</p>
     </div>
     <div class="experience-card">
-      <div class="experience-card-img"><img src="IMAGEN-CUADRO-CON-TEXTO-2.png" alt="Resolver dudas sobre becas" loading="lazy" decoding="async"></div>
+      <div class="experience-card-icon"><i class="fa-solid fa-sack-dollar"></i></div>
       <p>Resolver todas tus dudas sobre becas, requisitos de postulación y opciones de financiamiento.</p>
     </div>
     <div class="experience-card">
-      <div class="experience-card-img"><img src="IMAGEN-CUADRO-CON-TEXTO-3.png" alt="Asesoría personalizada" loading="lazy" decoding="async"></div>
+      <div class="experience-card-icon"><i class="fa-solid fa-compass"></i></div>
       <p>Recibir asesoría personalizada para armar tu plan de estudios en el extranjero.</p>
     </div>
     <div class="experience-card">
-      <div class="experience-card-img"><img src="IMAGEN-CUADRO-CON-TEXTO-4.png" alt="Conectar con otros estudiantes" loading="lazy" decoding="async"></div>
+      <div class="experience-card-icon"><i class="fa-solid fa-people-group"></i></div>
       <p>Conectar con otros profesionales y estudiantes que están en tu misma sintonía.</p>
+    </div>
+    <div class="experience-card">
+      <div class="experience-card-icon"><i class="fa-solid fa-passport"></i></div>
+      <p>Resolver tus dudas sobre visas, convalidación de títulos y requisitos de admisión.</p>
+    </div>
+    <div class="experience-card">
+      <div class="experience-card-icon"><i class="fa-solid fa-house-chimney"></i></div>
+      <p>Aprender cómo es vivir y mudarte a otro país durante tus estudios.</p>
     </div>
   </div>
   <div class="experience-cta reveal">
-    <a href="#registro" class="btn-primary">¡Quiero Asistir! <i class="fa-solid fa-arrow-right"></i></a>
+    <label for="registerModalToggle" class="btn-primary">¡Quiero asistir! <i class="fa-solid fa-arrow-right"></i></label>
   </div>
 </section>
-
-<!-- RESUELVE TUS DUDAS -->
-<section class="faq-check">
-  <div class="faq-check-grid">
-    <div class="faq-check-img reveal">
-      <img src="IMAGEN-4.png" alt="Estudiantes resolviendo dudas" 
-           loading="lazy" decoding="async">
-    </div>
-    <div class="reveal">
-      <div class="section-tag">Asesoría integral</div>
-      <h2 class="section-title">Resuelve todas tus dudas sobre...</h2>
-      <ul class="faq-check-list">
-        <li><i class="fa-solid fa-circle-check"></i> Programas y opciones de estudio</li>
-        <li><i class="fa-solid fa-circle-check"></i> Plazos de postulación</li>
-        <li><i class="fa-solid fa-circle-check"></i> Convalidación y certificación de títulos</li>
-        <li><i class="fa-solid fa-circle-check"></i> Cómo postular a la visa correcta</li>
-        <li><i class="fa-solid fa-circle-check"></i> Requisitos de admisión</li>
-        <li><i class="fa-solid fa-circle-check"></i> Becas y opciones de financiamiento</li>
-        <li><i class="fa-solid fa-circle-check"></i> Cómo es vivir y mudarse a otro país</li>
-      </ul>
-    </div>
-  </div>
-</section>
-<!-- 
-═══════════════════════════════════════════════════════
-AGENDA / SPEAKERS
-[SECCIÓN OCULTA TEMPORALMENTE]
-═══════════════════════════════════════════════════════
-
-<section class="schedule" id="agenda">
-  <div class="schedule-grid">
-    <div class="schedule-list reveal">
-      <p class="schedule-intro">Nuestro equipo te estará acompañando durante toda la feria, desde las 16:00 hasta las 19:30h. ¡Te esperamos!</p>
-      <div class="schedule-item">
-        <div class="schedule-time">17:00h</div>
-        <h4>Opening Session</h4>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">17:30h - 18:00h</div>
-        <h4>Elif Damla Karakolcu</h4>
-        <span class="role">Communications Director at Capital Cell</span>
-        <div class="talk">"Draw Your Own Path in Life Science"</div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">18:15h - 18:45h</div>
-        <h4>Krasimir Stoev</h4>
-        <span class="role">Lead of AI and Automation at EnduroSat</span>
-        <div class="talk">"Space Is Closer Than You Think: Studying Space Engineering"</div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">18:45h - 19:15h</div>
-        <h4>Yulia Tiyakova &amp; Christian Vester Nielsen</h4>
-        <span class="role">International Coordinator at University of Southern Denmark · Head of Student Recruitment and Educational Communication at SDU</span>
-        <div class="talk">"How Your International Experiences Become Part of Your Personal Brand"</div>
-      </div>
-    </div>
-    <div class="schedule-side reveal">
-      <h3 class="section-title" style="font-size:1.7rem">¿Qué tenemos preparado para el evento?</h3>
-      <p>Charlas, mesas de trabajo y espacios de networking con especialistas invitados de distintas partes del mundo.</p>
-      <div class="schedule-timeline">
-        <div class="timeline-entry">
-          <span class="timeline-dot"></span>
-          <span class="timeline-label">Opening Session</span>
-        </div>
-        <div class="timeline-entry">
-          <span class="timeline-dot"></span>
-          <div class="timeline-avatars">
-            <div class="speaker-avatar"><img src="imagems (1).png" alt="Elif Damla Karakolcu" loading="lazy" decoding="async"></div>
-          </div>
-        </div>
-        <div class="timeline-entry">
-          <span class="timeline-dot"></span>
-          <div class="timeline-avatars">
-            <div class="speaker-avatar"><img src="imagems (4).png" alt="Krasimir Stoev" loading="lazy" decoding="async"></div>
-          </div>
-        </div>
-        <div class="timeline-entry">
-          <span class="timeline-dot"></span>
-          <div class="timeline-avatars">
-            <div class="speaker-avatar"><img src="imagems (3).png" alt="Yulia Tiyakova" loading="lazy" decoding="async"></div>
-            <div class="speaker-avatar"><img src="imagems (2).png" alt="Christian Vester Nielsen" loading="lazy" decoding="async"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-FIN DE SECCIÓN OCULTA
-═══════════════════════════════════════════════════════
--->
 <!-- CIERRE / MAPA -->
 <section class="closing" id="contact">
   <div class="closing-img reveal">
@@ -2273,7 +2076,7 @@ FIN DE SECCIÓN OCULTA
           <p>Ebro 2828, Las Condes, Santiago. (A pasos de Metro Tobalaba)</p>
         </div>
       </div>
-      <a href="#registro" class="btn-primary">Registrarse gratis <i class="fa-solid fa-arrow-right"></i></a>
+      <label for="registerModalToggle" class="btn-primary">Registrarse gratis <i class="fa-solid fa-arrow-right"></i></label>
     </div>
     <div class="closing-map reveal">
       <iframe src="https://maps.google.com/maps?q=Hotel%20Plaza%20El%20Bosque%20Ebro%2C%20Ebro%202828%2C%20Las%20Condes%2C%20Santiago&t=&z=15&ie=UTF8&iwloc=&output=embed" 
@@ -2285,55 +2088,6 @@ FIN DE SECCIÓN OCULTA
     </div>
   </div>
 </section>
-
-</body>
-</html>
-
-
-<script>
-  // Reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal, .area-card, .experience-card');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
-
-  // Scroll progress bar
-  const scrollProgress = document.getElementById('scrollProgress');
-  window.addEventListener('scroll', () => {
-    const h = document.documentElement;
-    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-    if (scrollProgress) scrollProgress.style.width = scrolled + '%';
-  });
-
-  // Mobile menu
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileClose = document.getElementById('mobileClose');
-  if (hamburgerBtn && mobileMenu) {
-    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
-  }
-
-  // Back to top
-  const backTop = document.createElement('button');
-  backTop.className = 'back-top';
-  backTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  document.body.appendChild(backTop);
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 600) backTop.classList.add('show');
-    else backTop.classList.remove('show');
-  });
-</script>
-</body>
-</html>
 
 <!-- FOOTER -->
 <footer>
@@ -2364,14 +2118,6 @@ FIN DE SECCIÓN OCULTA
         </div>
       </div>
       
-      <div class="footer-office">
-        <i class="fa-solid fa-location-dot"></i>
-        <div class="office-info">
-          <strong>Portugal Office</strong>
-          <p>AV. General Marquês Sá da Bandeira, 4, Loja L<br>Santarém, Portugal</p>
-        </div>
-      </div>
-      
       <div class="footer-contact">
         <i class="fa-solid fa-envelope"></i>
         <a href="mailto:info@srtfairs.com">info@srtfairs.com</a>
@@ -2388,14 +2134,8 @@ FIN DE SECCIÓN OCULTA
   <i class="fa-solid fa-arrow-up"></i>
 </button>
 
-
 <script>
-// ══════════════════════════════════════════
-// INICIALIZACIÓN GLOBAL
-// ══════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
-
-  // ══ NAV SCROLL ══
   const nav = document.getElementById('navbar');
   const backTop = document.getElementById('backTop');
 
@@ -2406,70 +2146,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // estado inicial
+  onScroll();
 
-  // ══ MOBILE MENU ══
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileClose = document.getElementById('mobileClose');
-
-  if (hamburgerBtn && mobileMenu) {
-    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-  }
-  if (mobileClose && mobileMenu) {
-    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  }
-  document.querySelectorAll('.mob-link').forEach(a => {
-    a.addEventListener('click', () => {
-      if (mobileMenu) mobileMenu.classList.remove('open');
-    });
-  });
-
-  // ══ HERO CAROUSEL ══
-  const heroTrack = document.getElementById('carouselTrack');
-  const hero = document.querySelector('.hero');
-
-  if (heroTrack && hero) {
-    let current = 0;
-    const totalSlides = 3;
-
-    function goTo(n) {
-      current = ((n % totalSlides) + totalSlides) % totalSlides;
-      heroTrack.style.transform = `translateX(-${current * (100 / 3)}%)`;
-    }
-
-    let timer = null;
-    let isPaused = false;
-
-    function startAutoPlay() {
-      if (timer) clearInterval(timer);
-      timer = setInterval(() => {
-        if (!isPaused) goTo(current + 1);
-      }, 5000);
-    }
-
-    hero.addEventListener('mouseenter', () => { isPaused = true; });
-    hero.addEventListener('mouseleave', () => { isPaused = false; });
-
-    startAutoPlay();
-
-    let tx = 0;
-    hero.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-    hero.addEventListener('touchend', e => {
-      const diff = tx - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) {
-        goTo(current + (diff > 0 ? 1 : -1));
-        startAutoPlay();
-      }
-    });
-  }
-
-  // ══ INTERSECTION OBSERVER (Reveal on scroll) ══
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('visible');
-        io.unobserve(e.target); // dejar de observar una vez visible (mejor rendimiento)
+        io.unobserve(e.target);
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
@@ -2484,7 +2167,6 @@ document.addEventListener('DOMContentLoaded', () => {
     io.observe(el);
   });
 
-  // ══ SMOOTH NAV ══
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const href = a.getAttribute('href');
@@ -2493,187 +2175,61 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target) {
         e.preventDefault();
         window.scrollTo({
-          top: target.getBoundingClientRect().top + window.scrollY - 72,
+          top: target.getBoundingClientRect().top + window.scrollY - 96,
           behavior: 'smooth'
         });
       }
     });
   });
 
-  // ══ CARRUSELES DE UNIVERSIDADES ALIADAS (OPTIMIZADO) ══
-  // Usa CSS animations nativas (corren en el compositor, mucho más eficientes)
-  // Solo activa JS cuando el usuario hace drag
-  const carousels = document.querySelectorAll('.allied-universities-carousel');
-
-  carousels.forEach(carousel => {
-    const track = carousel.querySelector('.allied-track');
-    if (!track) return;
-
-    // Calcular ancho UNA SOLA VEZ (no en cada frame)
-    const logos = track.querySelectorAll('.allied-logo');
-    const originalCount = logos.length / 2;
-    const gap = parseFloat(getComputedStyle(track).gap) || 24;
-
-    function getSetWidth() {
-      if (!logos[0]) return 0;
-      const logoWidth = logos[0].getBoundingClientRect().width;
-      return (logoWidth + gap) * originalCount;
-    }
-
-    // Esperar a que las imágenes carguen para calcular bien el ancho
-    let setWidth = 0;
-    let ready = false;
-
-    function init() {
-      setWidth = getSetWidth();
-      if (setWidth > 0) {
-        ready = true;
-        // Aplicar animación CSS (eficiente, corre en GPU)
-        const direction = track.classList.contains('allied-track-right') ? 'right' : 'left';
-        track.style.animation = `scroll${direction.charAt(0).toUpperCase() + direction.slice(1)} 45s linear infinite`;
-        track.style.willChange = 'transform';
-      }
-    }
-
-    // Iniciar cuando las imágenes estén listas
-    if (document.readyState === 'complete') {
-      init();
-    } else {
-      window.addEventListener('load', init);
-    }
-
-    // ══ PAUSAR CUANDO NO ES VISIBLE (ahorra CPU) ══
-    const carouselObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          track.style.animationPlayState = 'running';
-        } else {
-          track.style.animationPlayState = 'paused';
-        }
-      });
-    }, { threshold: 0.05 });
-
-    carouselObserver.observe(carousel);
-
-    // ══ DRAG INTERACTION (simplificado) ══
-    let isDragging = false;
-    let startX = 0;
-    let startOffset = 0;
-    let currentOffset = 0;
-    let velocity = 0;
-    let lastX = 0;
-    let lastTime = 0;
-    let dragAnimId = null;
-
-    function getX(e) {
-      return e.touches ? e.touches[0].clientX : e.clientX;
-    }
-
-    function startDrag(e) {
-      if (!ready) return;
-      isDragging = true;
-      // Capturar posición actual del transform
-      const matrix = new DOMMatrix(getComputedStyle(track).transform);
-      currentOffset = matrix.m41;
-      startOffset = currentOffset;
-      startX = getX(e);
-      lastX = startX;
-      lastTime = Date.now();
-      velocity = 0;
-      // Pausar animación CSS
-      track.style.animationPlayState = 'paused';
-      carousel.style.cursor = 'grabbing';
-    }
-
-    function onDrag(e) {
-      if (!isDragging) return;
-      e.preventDefault();
-
-      const currentX = getX(e);
-      const deltaX = currentX - lastX;
-      const now = Date.now();
-      const dt = now - lastTime;
-
-      if (dt > 0) {
-        velocity = deltaX / dt;
-      }
-
-      currentOffset += deltaX;
-      lastX = currentX;
-      lastTime = now;
-
-      track.style.transform = `translateX(${currentOffset}px)`;
-    }
-
-    function endDrag() {
-      if (!isDragging) return;
-      isDragging = false;
-      carousel.style.cursor = '';
-
-      // Inercia con requestAnimationFrame (solo mientras dura)
-      const friction = 0.95;
-      function inertia() {
-        if (Math.abs(velocity) < 0.01) {
-          // Volver a animación CSS
-          track.style.animationPlayState = 'running';
-          return;
-        }
-        currentOffset += velocity * 16; // ~60fps
-        velocity *= friction;
-
-        // Loop infinito
-        if (currentOffset <= -setWidth) currentOffset += setWidth;
-        if (currentOffset > 0) currentOffset -= setWidth;
-
-        track.style.transform = `translateX(${currentOffset}px)`;
-        dragAnimId = requestAnimationFrame(inertia);
-      }
-
-      if (dragAnimId) cancelAnimationFrame(dragAnimId);
-      dragAnimId = requestAnimationFrame(inertia);
-    }
-
-    // Event listeners (con cleanup al destruir)
-    carousel.addEventListener('mousedown', startDrag);
-    carousel.addEventListener('touchstart', startDrag, { passive: true });
-
-    // Usar listeners en document para drag global
-    document.addEventListener('mousemove', onDrag);
-    document.addEventListener('touchmove', onDrag, { passive: false });
-    document.addEventListener('mouseup', endDrag);
-    document.addEventListener('touchend', endDrag);
-    document.addEventListener('touchcancel', endDrag);
-
-    carousel.addEventListener('dragstart', e => e.preventDefault());
-
-    // Pausar animación en hover (solo si no se está arrastrando)
-    carousel.addEventListener('mouseenter', () => {
-      if (!isDragging) track.style.animationPlayState = 'paused';
-    });
-    carousel.addEventListener('mouseleave', () => {
-      if (!isDragging) track.style.animationPlayState = 'running';
-    });
-  });
-
-  // ══ FORMULARIO DE REGISTRO ══
   const registerForm = document.querySelector('.register-form');
+  const modalToggle = document.getElementById('registerModalToggle');
   if (registerForm) {
     registerForm.addEventListener('submit', e => {
       e.preventDefault();
       alert('¡Gracias por registrarte! Te enviaremos tu código QR por correo.');
       registerForm.reset();
+      if (modalToggle) modalToggle.checked = false;
     });
   }
 
-  // ══ REDUCE MOTION ══
+  const eventVideo = document.querySelector('.event-video-player');
+  if (eventVideo) {
+    const tryPlay = eventVideo.play();
+    if (tryPlay !== undefined) {
+      tryPlay.catch(() => {
+        // El navegador bloqueó el autoplay con sonido: reproducir silenciado
+        // y quitar el silencio en cuanto el usuario interactúe con la página.
+        eventVideo.muted = true;
+        eventVideo.play();
+        const unmute = () => {
+          eventVideo.muted = false;
+          window.removeEventListener('click', unmute);
+          window.removeEventListener('touchstart', unmute);
+        };
+        window.addEventListener('click', unmute, { once: true });
+        window.addEventListener('touchstart', unmute, { once: true });
+      });
+    }
+  }
+
+  const modalOverlay = document.getElementById('modalOverlay');
+  if (modalOverlay && modalToggle) {
+    modalOverlay.addEventListener('click', e => {
+      if (e.target === modalOverlay) modalToggle.checked = false;
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') modalToggle.checked = false;
+    });
+  }
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll('.allied-track').forEach(t => {
       t.style.animation = 'none';
       t.style.transition = 'none';
     });
   }
-
-}); // fin DOMContentLoaded
+});
 </script>
 </body>
 </html>
